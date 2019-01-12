@@ -14,8 +14,6 @@ import scipy.io as spio
 import numpy as np
 import pickle
 import os
-from utils import load_pickle
-
 
 def extract_imagined_speech(data_type, ranges):
 
