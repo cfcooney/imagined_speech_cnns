@@ -167,3 +167,24 @@ def predict(model, X_test, batch_size, iterator, threshold_for_binary_case=None)
         pred_labels = compute_pred_labels_from_trial_preds(
                     all_preds, threshold_for_binary_case)
     return pred_labels
+
+def return_indices(event_id, labels):
+    """
+    Returns indices for each word and vowel in the 
+    EEG dataset. Enables extraction of individual classes.
+
+    Parameters: 
+        event_id: dict containing class label and number
+        labels: np.array containing labels corresponding to dataset
+
+    Returns:
+        list of indices 
+    """
+    indices = []
+    for _, k in enumerate(event_id):
+        idx = []
+        for d, j in enumerate(labels):
+            if event_id[k] == j:
+                idx.append(d)
+        indices.append(idx)
+    return indices
