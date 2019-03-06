@@ -61,14 +61,11 @@ Output:
 """
     idx, a, x = ([] for i in range(3))
     [idx.append(i) for i in range(0,data.shape[1],epoch_size)]
-    
+    #print(idx)
     for j in data:
         [a.append([j[idx[k]:idx[k]+epoch_size]]) for k in range(len(idx))]
-        
-    for i in range(n_events):
-        x.append([a[i],a[i+n_events],a[i+n_events*2],a[i+n_events*3],a[i+n_events*4],a[i+n_events*5]])
     
-    return np.reshape(np.array(x),(n_events,n_chan,epoch_size))
+    return np.reshape(np.array(a),(n_events,n_chan,epoch_size))
     
 def balanced_subsample(features, targets, random_state=12):
     """
